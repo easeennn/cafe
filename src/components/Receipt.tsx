@@ -22,7 +22,7 @@ export default function Receipt() {
           <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[10cqw]" style={{ background: 'linear-gradient(180deg,rgba(0,0,0,.3),transparent)' }} />
           <div className={rule} />
           <h3 className="display mt-[5cqw] text-center text-[6.6cqw] leading-[1.05] tracking-[-.01em]">Skip the line.<br />Order ahead.</h3>
-          <div className="relative mx-auto my-[4.5cqw] h-[34cqw] w-[34cqw]"><Slot name="receipt-cup" alt="Iced coffee" className="inset-0" sizes="150px" /></div>
+          <div className="relative mx-auto my-[4.5cqw] h-[34cqw] w-[34cqw]"><Slot name="iced-3" alt="Iced coffee" className="inset-0" sizes="150px" /></div>
           <div className={rule} />
           <p className="mono mt-[4cqw] text-[3.7cqw] normal-case leading-[1.55] text-[#333]" style={{ textTransform: 'none' }}>Grab yours at<br />{site.address[0]}</p>
           <div className="my-[4cqw] h-[1.2cqw] border-y border-[#8d8d8d]" />

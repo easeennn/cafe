@@ -142,13 +142,63 @@ export function MenuScene() {
 /* ───────── 05 LOCATION / CLOCK ───────── */
 // md+: sticky stage, short pin. Phones: normal flow (no pin, no dead scroll) with the same motion driven by the clock itself.
 // The cup is hidden first, fades/drops in, lands on the clock's centre, then cup and needle turn together (a 200° sweep).
+// const SWEEP = 540; // needle + cup keep turning for as long as the scene is on screen (never parks on a number)
+// export function LocationScene() {
+//   const root = useRef<HTMLElement>(null);
+//   useScene(root, (r, q) => {
+//     const clock = q('.clock')[0], cup = q('.cup'), hand = q('.hand');
+//     const mm = gsap.matchMedia();
+//     const dropDesk = (st: ScrollTrigger.Vars) => gsap.fromTo(cup, { y: () => -clock.clientWidth * 0.95 }, { y: 0, ease: 'power2.out', scrollTrigger: { ...st, invalidateOnRefresh: true } });
+//     const dropFade = (st: ScrollTrigger.Vars) => gsap.fromTo(cup, { y: () => -clock.clientWidth * 0.55, opacity: 0 }, { y: 0, opacity: 1, ease: 'power2.out', scrollTrigger: { ...st, invalidateOnRefresh: true } });
+//     const spin = (st: ScrollTrigger.Vars) => {
+//       const o = { ease: 'none', scrollTrigger: st } as const;
+//       gsap.fromTo(hand, { rotate: 0, svgOrigin: '200 200' }, { rotate: SWEEP, svgOrigin: '200 200', ...o });
+//       gsap.fromTo(cup, { rotate: 0 }, { rotate: SWEEP, ...o });
+//     };
+//     mm.add('(min-width: 768px)', () => {
+//       dropDesk(trig(r, { start: 'top 55%', end: 'top top', scrub: true }));
+//       spin(trig(r, { start: 'top top', end: 'bottom top', scrub: true }));
+//     });
+//     mm.add('(max-width: 767px)', () => {
+//       dropFade(trig(clock, { start: 'top 85%', end: 'center 55%', scrub: true }));
+//       spin(trig(clock, { start: 'center 55%', end: 'bottom top', scrub: true }));
+//     });
+//   });
+//   return (
+//     <section ref={root} id="location" data-theme="light" className="relative flex min-h-[100svh] w-full flex-col bg-cream text-ink md:block">
+//       <div className="relative flex flex-1 flex-col md:block md:h-[135svh]">
+//         <div className="relative flex flex-1 flex-col items-center justify-evenly px-[5%] pb-3 pt-[12svh] md:sticky md:top-0 md:grid md:h-[100svh] md:place-items-center md:overflow-hidden md:p-0">
+//           <Eyebrow className="self-start md:absolute md:left-[2.8%] md:top-[15%]">{'// Our location'}</Eyebrow>
+//           <div className="clock relative mt-0 aspect-square w-[min(86vw,46svh)] md:mt-0 md:w-[min(80vw,72svh)]">
+//             <Clock className="h-full w-full" />
+//           <div className="absolute inset-0 grid place-items-center">
+//   {/* BEFORE: h-[52%] w-[30%] */}
+//   {/* AFTER: Scaled up responsively across mobile, tablet, and desktop */}
+//   <div className="cup relative h-[60%] w-[55%] sm:h-[75%] sm:w-[48%] md:h-[70%] md:w-[42%] lg:h-[75%] lg:w-[46%]">
+//     <Slot name="iced-2" alt="Iced coffee" className="inset-0" sizes="(max-width: 640px) 65vw, (max-width: 1024px) 42vw, 36vw" />
+//   </div>
+// </div>
+//           </div>
+//           <p data-type className="mono mt-0 self-start text-[10px] leading-[1.6] md:absolute md:bottom-[6svh] md:left-[2.8%] md:mt-0 md:max-w-[260px] md:text-[12px]">
+//             Time moves fast.<br />Your coffee shouldn&apos;t.<br />Brewed fresh, every single day.
+//           </p>
+//         </div>
+//       </div>
+//       <div data-rise className="mono grid grid-cols-2 gap-x-6 gap-y-3 px-[5%] pb-5 pt-3 text-[10px] md:flex md:justify-between md:px-[2.8%] md:pt-4 md:text-[12px]">
+//         <p data-type>{site.address[0]}<br />{site.address[1]}</p>
+//         <p data-type className="md:text-right">Open daily<br />{site.hours}</p>
+//       </div>
+//     </section>
+//   );
+// }
+
 const SWEEP = 540; // needle + cup keep turning for as long as the scene is on screen (never parks on a number)
 export function LocationScene() {
   const root = useRef<HTMLElement>(null);
   useScene(root, (r, q) => {
     const clock = q('.clock')[0], cup = q('.cup'), hand = q('.hand');
     const mm = gsap.matchMedia();
-    const dropDesk = (st: ScrollTrigger.Vars) => gsap.fromTo(cup, { y: () => -clock.clientWidth * 0.95 }, { y: 0, ease: 'power2.out', scrollTrigger: { ...st, invalidateOnRefresh: true } });
+    const dropDesk = (st: ScrollTrigger.Vars) => gsap.fromTo(cup, { y: '-120vh' }, { y: 0, ease: 'power2.out', scrollTrigger: { ...st, invalidateOnRefresh: true } });
     const dropFade = (st: ScrollTrigger.Vars) => gsap.fromTo(cup, { y: () => -clock.clientWidth * 0.55, opacity: 0 }, { y: 0, opacity: 1, ease: 'power2.out', scrollTrigger: { ...st, invalidateOnRefresh: true } });
     const spin = (st: ScrollTrigger.Vars) => {
       const o = { ease: 'none', scrollTrigger: st } as const;
@@ -171,13 +221,11 @@ export function LocationScene() {
           <Eyebrow className="self-start md:absolute md:left-[2.8%] md:top-[15%]">{'// Our location'}</Eyebrow>
           <div className="clock relative mt-0 aspect-square w-[min(86vw,46svh)] md:mt-0 md:w-[min(80vw,72svh)]">
             <Clock className="h-full w-full" />
-          <div className="absolute inset-0 grid place-items-center">
-  {/* BEFORE: h-[52%] w-[30%] */}
-  {/* AFTER: Scaled up responsively across mobile, tablet, and desktop */}
-  <div className="cup relative h-[60%] w-[55%] sm:h-[75%] sm:w-[48%] md:h-[80%] md:w-[42%] lg:h-[85%] lg:w-[46%]">
-    <Slot name="iced-coffee" alt="Iced coffee" className="inset-0" sizes="(max-width: 640px) 65vw, (max-width: 1024px) 42vw, 36vw" />
-  </div>
-</div>
+            <div className="absolute inset-0 grid place-items-center">
+              <div className="cup relative h-[60%] w-[55%] sm:h-[75%] sm:w-[48%] md:h-[58%] md:w-[35%] lg:h-[62%] lg:w-[38%]">
+                <Slot name="iced-2" alt="Iced coffee" className="inset-0" sizes="(max-width: 640px) 65vw, (max-width: 1024px) 42vw, 36vw" />
+              </div>
+            </div>
           </div>
           <p data-type className="mono mt-0 self-start text-[10px] leading-[1.6] md:absolute md:bottom-[6svh] md:left-[2.8%] md:mt-0 md:max-w-[260px] md:text-[12px]">
             Time moves fast.<br />Your coffee shouldn&apos;t.<br />Brewed fresh, every single day.
@@ -191,6 +239,7 @@ export function LocationScene() {
     </section>
   );
 }
+
 
 /* ───────── 06 STATEMENT ───────── */
 export function StatementScene() {
@@ -213,7 +262,7 @@ export function PhilosophyScene() {
   return (
     <section ref={root} id="philosophy" data-theme="dark" className={`${sec} h-[100svh] bg-[#07121e] md:h-auto md:min-h-[100svh]`}>
       {beans.slice(0, 4).map(([l, t, s, r], i) => <Bean key={i} style={{ left: `${l + 10}%`, top: `${t * 0.8}%`, width: s * 0.8, transform: `rotate(${r}deg)` }} className="opacity-70" />)}
-      <div data-speed="50" className="absolute bottom-[-4%] left-[-8%] h-[50%] w-[58%] -rotate-[8deg] md:bottom-auto md:left-[-2%] md:top-[-4%] md:h-[110%] md:w-[34%]"><Slot name="hero-cup" alt="Iceland Coffee cup" className="inset-0" sizes="(max-width:768px) 56vw, 34vw" /></div>
+      <div data-speed="50" className="absolute bottom-[-4%] left-[-8%] h-[50%] w-[58%] -rotate-[8deg] md:bottom-auto md:left-[-2%] md:top-[-4%] md:h-[110%] md:w-[34%]"><Slot name="iced-4" alt="Iceland Coffee cup" className="inset-0" sizes="(max-width:768px) 56vw, 34vw" /></div>
       <Eyebrow className="absolute left-[5%] top-[11svh] z-10 text-white/80 md:bottom-6 md:left-[2.8%] md:top-auto">{'// Our philosophy'}</Eyebrow>
       <div className="absolute inset-x-[5%] top-[17svh] z-10 md:inset-x-auto md:right-[2.8%] md:top-[22%] md:w-[34%]">
         <Words text="Stay for a conversation or leave with the cup in your hand — both work. Neither takes any effort. Nothing here is rushed, and nothing keeps you longer than you meant to stay." className="text-[15px] font-medium uppercase leading-[1.3] md:text-[15px]" />

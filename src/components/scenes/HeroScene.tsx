@@ -58,11 +58,11 @@ export default function HeroScene() {
   return (
     <section ref={root} id="hero" data-theme="dark" aria-label="Iceland Coffee" className="relative w-full overflow-hidden" style={{ height: '100svh' }}>
       <div className="bg glow absolute inset-0" />
-      <div className="bag will-change-transform absolute bottom-[-3%] right-[-12%] z-20 h-[54%] w-[62%] md:bottom-auto md:right-[-3%] md:top-[14%] md:h-[92%] md:w-[38%]">
-        <div className="mx-bag absolute inset-0"><div className="float absolute inset-0"><Slot name="hero-bag" alt="Iceland Coffee Slow Roast bag" priority className="bag-in inset-0" sizes="(max-width:768px) 66vw, 38vw" /></div></div>
+      <div className="bag will-change-transform absolute bottom-[-3%] right-[-12%] z-20 h-[54%] w-[62%] md:bottom-auto md:right-[-3%] md:top-[24%] md:h-[72%] md:w-[38%]">
+        <div className="mx-bag absolute inset-0"><div className="float absolute inset-0"><Slot name="iced-2" alt="Iceland Coffee Slow Roast bag" priority className="bag-in inset-0" sizes="(max-width:768px) 66vw, 38vw" /></div></div>
       </div>
       <div className="cup will-change-transform absolute bottom-[1%] left-[5%] z-30 h-[50%] w-[54%] md:bottom-auto md:left-[42%] md:top-[40%] md:h-[60%] md:w-[32%]">
-        <div className="mx-cup absolute inset-0"><div className="float absolute inset-0"><Slot name="hero-cup" alt="Iceland Coffee cup" priority className="cup-in inset-0" sizes="(max-width:768px) 54vw, 32vw" /></div></div>
+        <div className="mx-cup absolute inset-0"><div className="float absolute inset-0"><Slot name="iced-1" alt="Iceland Coffee cup" priority className="cup-in inset-0" sizes="(max-width:768px) 54vw, 32vw" /></div></div>
       </div>
       <div key={i} className="tag mono absolute right-[3%] top-[12%] z-30 hidden w-[22%] max-w-[330px] border border-white/10 bg-black/35 p-5 md:block">
         <p className="text-[10px] text-white/50">{t.eyebrow}</p>

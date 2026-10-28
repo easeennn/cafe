@@ -1,8 +1,8 @@
 export const products = [
-  { id: '01', name: 'Espresso', description: 'Double shot, dense crema.', price: '$2.50', image: 'fav-1' },
-  { id: '02', name: 'Latte', description: 'Silky milk, slow-roast base.', price: '$4.20', image: 'fav-2' },
-  { id: '03', name: 'Iced Coffee', description: 'Cold brewed for 18 hours.', price: '$4.50', image: 'fav-3' },
-  { id: '04', name: 'Cinnamon Roll', description: 'Baked at six, gone by ten.', price: '$3.70', image: 'fav-4' },
+  { id: '01', name: 'Espresso', description: 'Double shot, dense crema.', price: '$2.50', image: 'iced-1' },
+  { id: '02', name: 'Latte', description: 'Silky milk, slow-roast base.', price: '$4.20', image: 'iced-2' },
+  { id: '03', name: 'Iced Coffee', description: 'Cold brewed for 18 hours.', price: '$4.50', image: 'iced-3' },
+  { id: '04', name: 'Cinnamon Roll', description: 'Baked at six, gone by ten.', price: '$3.70', image: 'iced-4' },
 ] as const;
 export const bagTags = [
   { eyebrow: '// IN THE BAG', name: 'SLOW ROAST', price: '$18.00', meta: '250 G · WHOLE BEAN · SMALL BATCH' },
